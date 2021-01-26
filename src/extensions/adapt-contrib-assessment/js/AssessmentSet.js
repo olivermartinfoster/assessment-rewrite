@@ -17,7 +17,8 @@ export default class AssessmentSet extends ScoringSet {
   }
 
   get models() {
-    return this.filterModels(this.model.getChildren().toArray());
+    const models = this.model.getChildren().toArray();
+    return this.filterModels(models);
   }
 
   get minScore() {

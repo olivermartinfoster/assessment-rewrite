@@ -13,10 +13,11 @@ export default class BucketSet extends ScoringSet {
   }
 
   get models() {
-    return this.filterModels(data.toArray().filter(model => {
+    const models = data.toArray().filter(model => {
       const config = model.get('_buckets');
       return (config instanceof Array && config.includes(this.id));
-    }));
+    });
+    return this.filterModels(models);
   }
 
   get minScore() {

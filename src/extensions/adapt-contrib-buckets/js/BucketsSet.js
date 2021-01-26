@@ -18,11 +18,12 @@ export default class BucketsSet extends ScoringSet {
    * @returns {[Backbone.Model]}
    */
   get models() {
-    return this.filterModels(getSubsetsByType('bucket').reduce((models, set) => {
+    const models = getSubsetsByType('bucket').reduce((models, set) => {
       const items = set.models;
       if (!items) return models;
       return models.concat(items);
-    }, []));
+    }, []);
+    return this.filterModels(models);
   }
 
   /**
